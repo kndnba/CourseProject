@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.bignerdranch.android.courseproject.data.entities.Character
-import com.bignerdranch.android.courseproject.data.entities.CharacterList
 import com.bignerdranch.android.courseproject.data.entities.ListCharacters
 
 @Dao
