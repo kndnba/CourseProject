@@ -4,12 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.bignerdranch.android.courseproject.data.entities.Character
+import com.bignerdranch.android.courseproject.data.entities.TypeConverter
 
-@Database(entities = [Character::class], version = 1, exportSchema = false)
+@TypeConverters(value = [TypeConverter::class])
+@Database(entities = [Character::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun characterDao(): CharacterDao
+    abstract fun getEpisodesDetailsDao(): EpisodesDetailsDao
 
     companion object {
         @Volatile private var instance: AppDatabase? = null
@@ -22,5 +26,4 @@ abstract class AppDatabase : RoomDatabase() {
                 .fallbackToDestructiveMigration()
                 .build()
     }
-
 }

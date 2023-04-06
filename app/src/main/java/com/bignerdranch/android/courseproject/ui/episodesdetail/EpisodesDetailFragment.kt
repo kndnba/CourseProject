@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bignerdranch.android.courseproject.R
+import com.bignerdranch.android.courseproject.data.entities.Character
 import com.bignerdranch.android.courseproject.data.entities.Episodes
 import com.bignerdranch.android.courseproject.databinding.FragmentEpisodesDetailBinding
 import com.bignerdranch.android.courseproject.ui.characters.CharacterAdapter
@@ -66,6 +67,24 @@ class EpisodesDetailFragment : Fragment(), CharacterAdapter.CharacterItemListene
                 }
             }
         })
+
+        viewModel.characters.observe(viewLifecycleOwner) {
+            when (it.status) {
+                Resource.Status.SUCCESS -> {
+                    val arrayList = arrayListOf<Character>()
+                    it.data?.results?.let { it1 -> arrayList.addAll(it1) }
+                    adapter.setItems(arrayList)
+                }
+
+                Resource.Status.ERROR ->
+                    Toast.makeText(activity, it.message, Toast.LENGTH_SHORT).show()
+
+                Resource.Status.LOADING -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                    binding.episodeCl.visibility = View.GONE
+                }
+            }
+        }
     }
 
     @SuppressLint("SetTextI18n")

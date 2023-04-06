@@ -67,6 +67,10 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun provideEpisodesDetailsDao(@ApplicationContext appContext: Context): EpisodesDetailsDao = AppDatabase.getDatabase(appContext).getEpisodesDetailsDao()
+
+    @Singleton
+    @Provides
     fun provideRepository(remoteDataSource: CharacterRemoteDataSource,
                           localDataSource: CharacterDao): CharacterInteractor =
         CharacterInteractor(remoteDataSource, localDataSource)

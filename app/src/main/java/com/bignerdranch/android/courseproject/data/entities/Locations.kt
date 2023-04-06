@@ -10,5 +10,6 @@ data class Locations(
     val id: Int,
     val name: String?,
     val type: String?,
-    val created: String?
+    val created: String?,
+    var residents: ListCharacters?
     )

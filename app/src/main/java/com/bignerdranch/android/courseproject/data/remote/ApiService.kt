@@ -7,11 +7,14 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("character ")
+    @GET("character")
     suspend fun getAllCharacters(@Query("page") pages: Int) : Response<CharacterList>
 
     @GET("character/{id}")
     suspend fun getCharacter(@Path("id") id: Int): Response<Character>
+
+    @GET("character/{ids}")
+    suspend fun getMultipleCharacters(@Path("ids") ids: List<Int>): Response<CharacterList>
 
     @GET("location")
     suspend fun getAllLocations(@Query("page")pages: Int) : Response<LocationResponse>
@@ -24,5 +27,4 @@ interface ApiService {
 
     @GET("episode/{id}")
     suspend fun getEpisode(@Path("id") id: Int): Response<Episodes>
-
 }

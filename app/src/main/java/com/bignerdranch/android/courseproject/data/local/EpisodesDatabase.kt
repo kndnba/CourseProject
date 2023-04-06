@@ -1,12 +1,11 @@
 package com.bignerdranch.android.courseproject.data.local
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import com.bignerdranch.android.courseproject.data.entities.Episodes
+import com.bignerdranch.android.courseproject.data.entities.TypeConverter
 
-@Database(entities = [Episodes::class], version = 6, exportSchema = false)
+@Database(entities = [Episodes::class], version = 10, exportSchema = false)
 abstract class EpisodesDatabase : RoomDatabase() {
 
     abstract fun getEpisodesDao(): EpisodesDao

@@ -1,11 +1,11 @@
 package com.bignerdranch.android.courseproject.data.local
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import com.bignerdranch.android.courseproject.data.entities.Locations
+import com.bignerdranch.android.courseproject.data.entities.TypeConverter
 
+@TypeConverters(value = [TypeConverter::class])
 @Database(entities = [Locations::class], version = 5, exportSchema = false)
 abstract class LocationsDatabase : RoomDatabase() {
 
